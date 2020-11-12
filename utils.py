@@ -73,9 +73,9 @@ def parse_phoible(phoible, var_to_index, p2f):
         if len(parsed_phoible) == 3021:
             break
 
-        for value in parsed_phoible.values():
-            value['vowels'] = [x for x in value['phonemes'] if '+' in p2f[x]['syllabic']]
-            value['consonants'] = [x for x in value['phonemes'] if x not in value['vowels']]
+    for value in parsed_phoible.values():
+        value['vowels'] = [x for x in value['phonemes'] if '+' in p2f[x]['syllabic']]
+        value['consonants'] = [x for x in value['phonemes'] if x not in value['vowels']]
 
     return parsed_phoible
 
