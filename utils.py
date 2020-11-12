@@ -70,11 +70,12 @@ def parse_phoible(phoible, var_to_index, p2f):
             parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'].append(temp[var_to_index['Phoneme']])
         parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'] = list(set(parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes']))
 
-        parsed_phoible[temp[var_to_index['InventoryID']]]['vowels'] = [x for x in parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'] if '+' in p2f[x]['syllabic']]
-        parsed_phoible[temp[var_to_index['InventoryID']]]['consonants'] = [x for x in parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'] if x not in parsed_phoible[temp[var_to_index['InventoryID']]]['vowels']]
-
         if len(parsed_phoible) == 3021:
             break
+
+        for value in parsed_phoible.values():
+            value['vowels'] = [x for x in value['phonemes'] if '+' in p2f[x]['syllabic']]
+            value['consonants'] = [x for x in value['phonemes'] if x not in value['vowels']]
 
     return parsed_phoible
 
