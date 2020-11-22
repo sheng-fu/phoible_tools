@@ -63,6 +63,7 @@ def parse_phoible(phoible, var_to_index, p2f):
             "InventoryID": temp[var_to_index['InventoryID']], 
             "Glottocode": temp[var_to_index['Glottocode']], 
             "ISO6393": temp[var_to_index['ISO6393']], 
+            "Source": temp[var_to_index['Source']], 
             "LanguageName": temp[var_to_index['LanguageName']], 
             "SpecificDialect": temp[var_to_index['SpecificDialect']],
                 "GlyphID": temp[var_to_index['GlyphID']]})
