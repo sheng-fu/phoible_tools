@@ -138,3 +138,32 @@ def make_p2f(phoible, var_to_index):
     #exit()
     
     return p2f, p2bof
+
+def add_glottolog(parsed_phoible, glottodict, parentdict):
+    for value in parsed_phoible.values():
+      if value['Glottocode'] in glottodict.keys():
+        value['GlottoName'] = glottodict[value['Glottocode']]['Name']         
+        value['Family_ID'] = glottodict[value['Glottocode']]['Family_ID']
+        value['Macroarea'] = glottodict[value['Glottocode']]['Macroarea']
+        value['Latitude'] = glottodict[value['Glottocode']]['Latitude']
+        value['Longitude'] = glottodict[value['Glottocode']]['Longitude']
+        value['Countries'] = glottodict[value['Glottocode']]['Countries']
+        if value['Family_ID'] not in ['', 'NA']:
+            value['Family_Name'] = glottodict[value['Family_ID']]['Name']
+            value['tree'] = []
+            a = parentdict[value['Glottocode']]['parent_id']
+            while a != '':
+                value['tree'].append(parentdict[a]['name'])
+                a = parentdict[a]['parent_id']
+        else:
+            value['Family_ID'] = 'NA'
+
+      else:
+        value['GlottoName'] = 'NA'
+        value['Family_ID'] = 'NA'
+        value['Family_Name'] = 'NA'
+        value['Macroarea'] = 'NA'
+        value['Latitude'] = 'NA'
+        value['Longitude'] = 'NA'
+        value['Countries'] = 'NA'
+        value['tree'] = []
