@@ -65,8 +65,7 @@ def parse_phoible(phoible, var_to_index, p2f):
             "ISO6393": temp[var_to_index['ISO6393']], 
             "Source": temp[var_to_index['Source']], 
             "LanguageName": temp[var_to_index['LanguageName']], 
-            "SpecificDialect": temp[var_to_index['SpecificDialect']],
-                "GlyphID": temp[var_to_index['GlyphID']]})
+            "SpecificDialect": temp[var_to_index['SpecificDialect']]})
         if temp[-1] != 'N' and temp[var_to_index['tone']] != '+':
             parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'].append(temp[var_to_index['Phoneme']])
         parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes'] = list(set(parsed_phoible[temp[var_to_index['InventoryID']]]['phonemes']))
